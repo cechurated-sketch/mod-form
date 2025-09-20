@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Kitty Moderator Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffebf3;
+            color: #5e5e5e;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ff9dc6' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hello-kitty {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #ff9dc6;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .bow {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #ff69b4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bow-left {
+            top: -20px;
+            left: -20px;
+            transform: rotate(-30deg);
+        }
+        
+        .bow-right {
+            bottom: -20px;
+            right: -20px;
+            transform: rotate(30deg);
+        }
+        
+        .application-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ff69b4;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ffd1dc;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #ff69b4;
+            box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .required {
+            color: #ff69b4;
+        }
+        
+        .submit-btn {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background-color: #ff4aa5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .privacy {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9e9e9e;
+            margin-top: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #ff9dc6;
+            font-size: 0.9rem;
+        }
+        
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .github-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .github-section h2 {
+            color: #ff69b4;
+            margin-bottom: 15px;
+        }
+
+        .github-steps {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .github-steps ol {
+            margin-left: 20px;
+        }
+
+        .github-steps li {
+            margin-bottom: 10px;
+        }
+
+        .code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .application-form {
+                padding: 20px;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="hello-kitty">🎀</div>
+            <h1>Cielle's Moderator Application</h1>
+            <p class="subtitle">The website creator is being held hostage!</p>
+            <div class="bow bow-left">🎀</div>
+            <div class="bow bow-right">🎀</div>
+        </header>
+
+        <div class="github-section">
+            <h2>🚀 Want to be a mod?</h2>
+            <div class="github-steps">
+                <p><strong>Fill out the form and follow Cielle's socials below!:</strong></p>
+                <ol>
+                    <li>https://www.twitch.tv/cielle_officialvt></li>
+                    <li>https://www.tiktok.com/@cielle_official?lang=en></li>
+                    <li>https://www.youtube.com/channel/UCyrazTB17cKqCbUb8ysm4vg></li>
+                    <li>Thats all for now! Scroll down!</li>
+                    <li>SCROLL DOWN!></li>
+                </ol>
+            </div>
+            <p>SCROLL DOWN, I MEAN IT!</p>
+        </div>
+        
+        <form class="application-form" id="modApplication" action="https://formsubmit.co/your-email@example.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New Moderator Application!">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+            
+            <div class="form-group">
+                <label for="name">What's your name? <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Your preferred name or nickname!">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Your Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="chickenricefan@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="discord">Discord Username <span class="required">*</span></label>
+                <input type="text" id="discord" name="discord" required placeholder="e.g., duckricefan#1234">
+            </div>
+            
+            <div class="form-group">
+                <label for="twitch">Twitch Username (if applicable)</label>
+                <input type="text" id="twitch" name="twitch" placeholder="If you don't have one, just leave blank!">
+            </div>
+            
+            <div class="form-group">
+                <label for="platform">Which platform are you applying to moderate for? <span class="required">*</span></label>
+                <select id="platform" name="platform" required>
+                    <option value="">Please select...</option>
+                    <option value="discord">Discord 🎀</option>
+                    <option value="twitch">Twitch 📺</option>
+                    <option value="both">Both! ✨</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="why">Why do you want to be a Discord/Twitch mod in our community? <span class="required">*</span></label>
+                <textarea id="why" name="why" required placeholder="Tell me why!"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="experience">Please describe your past experience in moderation or leadership experience. <span class="required">*</span></label>
+                <textarea id="experience" name="experience" required placeholder="This can be on Discord, Twitch, other games, forums, or even in real-life!"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="situation">How would you handle a situation where two members are having a heated argument in general chat? <span class="required">*</span></label>
+                <textarea id="situation" name="situation" required placeholder="NO FIGHTING!"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>What time zone are you in, and when are you usually online? <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="pst" name="timezone[]" value="PST">
+                        <label for="pst">PST (Pacific Time)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="est" name="timezone[]" value="EST">
+                        <label for="est">EST (Eastern Time)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="gmt" name="timezone[]" value="GMT">
+                        <label for="gmt">GMT/BST (UK Time)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="cet" name="timezone[]" value="CET">
+                        <label for="cet">CET (European Time)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="aest" name="timezone[]" value="AEST">
+                        <label for="aest">AEST (Australian Time)</label>
+                    </div>
+                </div>
+                <input type="text" name="timezone_other" placeholder="Other timezone? Specify here!" style="margin-top: 10px;">
+            </div>
+            
+            <div class="form-group">
+                <label for="sanrio">What is your favorite Sanrio character? <span class="required">*</span></label>
+                <select id="sanrio" name="sanrio" required>
+                    <option value="">Please select...</option>
+                    <option value="hello-kitty">Hello Kitty, of course!</option>
+                    <option value="my-melody">My Melody</option>
+                    <option value="kuromi">Kuromi</option>
+                    <option value="cinnamoroll">Cinnamoroll</option>
+                    <option value="pompompurin">Pompompurin</option>
+                    <option value="keroppi">Keroppi</option>
+                    <option value="all">All of them! 💖</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="extra">Is there anything else you'd like us to know about you?</label>
+                <textarea id="extra" name="extra" placeholder="Share a fun fact, a link to your profile, or something to wow us!"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Application! 🎀</button>
+            
+            <p class="privacy">Your information will only be used for moderator application purposes.</p>
+        </form>
+        
+        <footer>
+            <p>Made with 💖 and 🎀 for the Cielle community</p>
+        </footer>
+    </div>
+    
+    <div class="notification" id="notification">
+        Application submitted successfully! Thank you! 🎀
+    </div>
+
+    <script>
+        document.getElementById('modApplication').addEventListener('submit', function(e) {
+            // Basic validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let valid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    valid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ffd1dc';
+                }
+            });
+            
+            if (!valid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // If validation passes, the form will submit to FormSubmit
+            const notification = document.getElementById('notification');
+            notification.textContent = "Submitting your application... 🎀";
+            notification.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
